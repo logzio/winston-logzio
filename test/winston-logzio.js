@@ -1,0 +1,40 @@
+var sinon  = require('sinon');
+var assert = require('assert');
+var logzioNodejs = require('logzio-nodejs');
+var winston = require('winston');
+var winstonLogzio = require('../lib/winston-logzio');
+
+describe('winston-logzio', function() {
+
+    describe('send string as log message', function () {
+        var logSpy = sinon.spy();
+
+        before(function(done){
+            sinon.stub(logzioNodejs, 'createLogger')
+                .returns({ log: logSpy });
+            done();
+        });
+
+        after(function(done) {
+            logzioNodejs.createLogger.restore();
+            done();
+        });
+
+        it('builds the log object properly', function (done) {
+            winston.add(winston.transports.Logzio, {
+                name: 'logger1',
+                apiToken: '_API_TOKEN_'
+            });
+            var logMessage = 'Just a test message';
+            winston.log('warn', logMessage);
+
+            assert(logSpy.calledOnce);
+            var loggedObject = logSpy.args[0][0];
+            assert(loggedObject.message === logMessage);
+            assert(loggedObject.level === 'warn');
+
+            done();
+        });
+    });
+
+});
