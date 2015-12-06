@@ -23,7 +23,7 @@ describe('winston-logzio', function() {
         it('builds the log object properly', function (done) {
             winston.add(winston.transports.Logzio, {
                 name: 'logger1',
-                apiToken: '_API_TOKEN_'
+                token: '_API_TOKEN_'
             });
             var logMessage = 'Just a test message';
             winston.log('warn', logMessage);
