@@ -1,5 +1,5 @@
 # winston-logzio
-a winston transport wrapper for [Logz.io](http://logz.io/)
+A Winston transport wrapper for [Logz.io](http://logz.io/)
 
 ## Installation
 ```js
