@@ -1,5 +1,5 @@
 # winston-logzio
-a winston transport wrapper for logzio
+a winston transport wrapper for [Logz.io](http://logz.io/)
 
 ## Sample usage
 ```javascript
@@ -14,6 +14,9 @@ winston.add(logzioWinstonTransport, loggerOptions);
 winston.log('info', 'winston logger configured with logzio transport');
 
 ```
+
+Make sure you replace `__YOUR_API_TOKEN__` with your own logz.io api token.<br/>
+If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup)
 
 
 ## Details
