@@ -26,12 +26,16 @@ describe('winston-logzio', function() {
                 token: '_API_TOKEN_'
             });
             var logMessage = 'Just a test message';
-            winston.log('warn', logMessage);
+            var errorMessage = 'Big problem';
+            winston.log('warn', logMessage, new Error(errorMessage));
 
             assert(logSpy.calledOnce);
             var loggedObject = logSpy.args[0][0];
             assert(loggedObject.message === logMessage);
             assert(loggedObject.level === 'warn');
+            assert(typeof loggedObject.meta === 'object');
+            assert(typeof loggedObject.meta.error === 'string');
+            assert(loggedObject.meta.error.indexOf(errorMessage) >= 0);
 
             done();
         });
