@@ -3,7 +3,7 @@ A Winston transport wrapper for [Logz.io](http://logz.io/)
 
 ## Installation
 ```js
-npm install winston-logzio --save-dev
+npm install winston-logzio --save
 ```
 
 
