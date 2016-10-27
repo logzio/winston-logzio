@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/logzio/winston-logzio.svg?branch=master)
+
 # winston-logzio
 A Winston transport wrapper for [Logz.io](http://logz.io/)
 
