@@ -39,3 +39,37 @@ You can easily disable this by adding this line to your code :
 ```js
 winston.remove(winston.transports.Console);
 ```
+
+## Logs UncaughtException before Node process exit
+To enable logzio to log the last UncaughtException before Node exits,
+- you instantiate winston logger and injecting into it the winston-logzio transport as well as the exceptionHandlers
+- set your Node process to trap UncaughtException
+
+
+```javascript
+var callback = function() {} ;
+var winston = require('winston');
+var winstonLogzIO = require( 'winston-logzio' );
+var loggerOptions = {
+    token: '__YOUR_API_TOKEN__'
+};
+
+var logzIOTransport = new (winstonLogzIO)(loggerOptions);
+var logger = new(winston.Logger)({
+  transports: [
+    logzIOTransport
+  ],
+  exceptionHandlers: [
+    logzIOTransport
+  ],
+  exitOnError: true    // set this to true
+});
+
+process.on('uncaughtException', function (err) {
+  logger.error("UncaughtException processing: %s", err);
+  logzIOTransport.flush( function(callback) {
+    process.exit(1);
+  });
+});
+
+```
