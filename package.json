@@ -1,12 +1,16 @@
 {
   "name": "winston-logzio",
   "description": "A winston transport wrapper for logzio",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Gilly Barr <gilly@logz.io>",
   "contributors": [
     {
       "name": "Gilly Barr",
       "email": "gillyb@gmail.com"
+    },
+    {
+      "name": "Alon Mizrahi",
+      "email": "alonmizra@gmail.com"
     }
   ],
   "repository": {
@@ -23,11 +27,11 @@
     "winston"
   ],
   "dependencies": {
-    "util": "^0.10.3",
-    "winston": "1.0.x",
-    "logzio-nodejs": "0.4.2",
     "json-stringify-safe": "5.0.x",
-    "lodash.assign": "4.2.0"
+    "lodash.assign": "4.2.0",
+    "logzio-nodejs": "^0.4.6",
+    "util": "^0.10.3",
+    "winston": "1.0.x"
   },
   "devDependencies": {
     "assert": "^1.3.0",
