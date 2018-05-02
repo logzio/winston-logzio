@@ -1,7 +1,7 @@
 {
   "name": "winston-logzio",
   "description": "A winston transport wrapper for logzio",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "Gilly Barr <gilly@logz.io>",
   "contributors": [
     {
@@ -40,7 +40,7 @@
   },
   "main": "./lib/winston-logzio",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 8.4.0"
   },
   "license": "(Apache-2.0)",
   "scripts": {
