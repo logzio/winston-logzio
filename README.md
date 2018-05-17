@@ -15,7 +15,9 @@ var winston = require('winston');
 var logzioWinstonTransport = require('winston-logzio');
 
 var loggerOptions = {
-    token: '__YOUR_API_TOKEN__'
+    token: '__YOUR_API_TOKEN__',
+    host: 'listener.logz.io', // either listener.logz.io for US accounts or listener-eu.logz.io for EU Accounts
+    type: 'YourLogType'     // OPTIONAL (If none is set, it will be 'nodejs')
 };
 winston.add(logzioWinstonTransport, loggerOptions);
 
@@ -24,6 +26,7 @@ winston.log('info', 'winston logger configured with logzio transport');
 ```
 
 Make sure you replace `__YOUR_API_TOKEN__` with your own logz.io api token.<br/>
+
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup)
 
 
