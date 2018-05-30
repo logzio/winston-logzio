@@ -27,9 +27,9 @@
     "winston"
   ],
   "dependencies": {
-    "json-stringify-safe": "5.0.x",
+    "json-stringify-safe": "5.0.1",
     "lodash.assign": "4.2.0",
-    "logzio-nodejs": "^0.4.7",
+    "logzio-nodejs": "^0.4.11",
     "util": "^0.10.3",
     "winston": "1.0.x"
   },
