@@ -17,6 +17,9 @@
     "type": "git",
     "url": "https://github.com/logzio/winston-logzio"
   },
+  "publishConfig": {
+    "registry": "http://verdaccio.internal-virginia.io"
+  },
   "keywords": [
     "cloud computing",
     "log analytics",
