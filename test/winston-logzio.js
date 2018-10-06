@@ -1,22 +1,22 @@
-const sinon  = require('sinon');
+const sinon = require('sinon');
 const assert = require('assert');
 const logzioNodejs = require('logzio-nodejs');
 const winston = require('winston');
 const {createLogger} = winston;
 const LogzioWinstonTransport = require('../lib/winston-logzio');
 
-describe('winston-logzio', function() {
+describe('winston-logzio', function () {
 
     describe('send string as log message', function () {
         const logSpy = sinon.spy();
 
-        before(function(done){
+        before(function (done) {
             sinon.stub(logzioNodejs, 'createLogger')
-                .returns({ log: logSpy });
+                .returns({log: logSpy});
             done();
         });
 
-        after(function(done) {
+        after(function (done) {
             logzioNodejs.createLogger.restore();
             done();
         });
@@ -42,7 +42,7 @@ describe('winston-logzio', function() {
             assert(loggedObject.message === logMessage);
             assert(loggedObject.level === 'warn');
             assert(typeof loggedObject.meta === 'object');
-                assert(typeof loggedObject.meta.error === 'string');
+            assert(typeof loggedObject.meta.error === 'string');
             assert(loggedObject.meta.error.indexOf(errorMessage) >= 0);
 
             done();
