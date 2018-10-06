@@ -1,36 +1,44 @@
-var sinon  = require('sinon');
-var assert = require('assert');
-var logzioNodejs = require('logzio-nodejs');
-var winston = require('winston');
-var winstonLogzio = require('../lib/winston-logzio');
+const sinon = require('sinon');
+const assert = require('assert');
+const logzioNodejs = require('logzio-nodejs');
+const winston = require('winston');
+const {createLogger} = winston;
+const LogzioWinstonTransport = require('../lib/winston-logzio');
 
-describe('winston-logzio', function() {
+describe('winston-logzio', function () {
 
     describe('send string as log message', function () {
-        var logSpy = sinon.spy();
+        const logSpy = sinon.spy();
 
-        before(function(done){
+        before(function (done) {
             sinon.stub(logzioNodejs, 'createLogger')
-                .returns({ log: logSpy });
+                .returns({log: logSpy});
             done();
         });
 
-        after(function(done) {
+        after(function (done) {
             logzioNodejs.createLogger.restore();
             done();
         });
 
         it('builds the log object properly', function (done) {
-            winston.add(winston.transports.Logzio, {
+            const logzioWinstonTransport = new LogzioWinstonTransport({
+                level: 'info',
                 name: 'logger1',
                 token: '_API_TOKEN_'
             });
-            var logMessage = 'Just a test message';
-            var errorMessage = 'Big problem';
-            winston.log('warn', logMessage, new Error(errorMessage));
+            const logger = createLogger({
+                transports: [logzioWinstonTransport],
+
+            });
+
+            const logMessage = 'Just a test message';
+            const errorMessage = 'Big problem';
+            const error = new Error(errorMessage);
+            logger.log('warn', logMessage, error);
 
             assert(logSpy.calledOnce);
-            var loggedObject = logSpy.args[0][0];
+            const loggedObject = logSpy.args[0][0];
             assert(loggedObject.message === logMessage);
             assert(loggedObject.level === 'warn');
             assert(typeof loggedObject.meta === 'object');
