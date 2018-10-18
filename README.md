@@ -4,21 +4,15 @@
 A Winston transport wrapper for [Logz.io](http://logz.io/)
 
 ## Installation
-```js
+```bash
 npm install winston-logzio --save
 ```
 
 
 ## Sample usage
 ```javascript
-var winston = require('winston');
-var logzioWinstonTransport = require('winston-logzio');
-
-var loggerOptions = {
-    token: '__YOUR_API_TOKEN__',
-    host: 'listener.logz.io', // either listener.logz.io for US accounts or listener-eu.logz.io for EU Accounts
-    type: 'YourLogType'     // OPTIONAL (If none is set, it will be 'nodejs')
-};
+const winston = require('winston');
+const logzioWinstonTransport = require('winston-logzio');
 
 const logzioWinstonTransport = new LogzioWinstonTransport({
   level: 'info',
@@ -27,14 +21,11 @@ const logzioWinstonTransport = new LogzioWinstonTransport({
 });
 
 
-var logger = createLogger(winston.Logger)({
-  transports: [logzioWinstonTransport],
-  ]);
+const logger = createLogger(winston.Logger)({
+  transports: [logzioWinstonTransport]
+]);
 
-const logMessage = 'Just a test message';
-const errorMessage = 'Big problem';
-const error = new Error(errorMessage);
-logger.log('warn', logMessage, error);
+logger.log('warn', 'Just a test message', new Error('Big problem'));
 
 ```
 
