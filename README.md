@@ -2,6 +2,8 @@
 
 # winston-logzio
 A Winston transport wrapper for [Logz.io](http://logz.io/)
+## Versions
+Supports Winston 3, If you want to use Winston 2 - Checkout v1.0.8
 
 ## Installation
 ```bash
