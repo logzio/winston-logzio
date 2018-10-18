@@ -1,4 +1,5 @@
 module.exports = {
+  "extends": "airbnb-base",
   "env": {
     "browser": true,
     "node": true,
@@ -28,8 +29,14 @@ module.exports = {
     "fail": false
   },
   "rules": {
-    "comma-spacing":["error",{"after":true,"before":false}],
-    "arrow-spacing":["error",{"before":true,"after":true}],
+    "comma-spacing": ["error", {
+      "after": true,
+      "before": false
+    }],
+    "arrow-spacing": ["error", {
+      "before": true,
+      "after": true
+    }],
     "no-bitwise": 2,
     "curly": 2,
     "eqeqeq": 2,
@@ -153,8 +160,6 @@ module.exports = {
     ],
     "no-var": 2,
     "yoda": 2,
-    "no-console":2,
-    "no-const-assign":2,
-    "prefer-const":2
+    "no-console": 2,
   }
 }
