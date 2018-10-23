@@ -14,7 +14,7 @@ npm install winston-logzio --save
 ## Sample usage
 ```javascript
 const winston = require('winston');
-const logzioWinstonTransport = require('winston-logzio');
+const LogzioWinstonTransport = require('winston-logzio');
 
 const logzioWinstonTransport = new LogzioWinstonTransport({
   level: 'info',
