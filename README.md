@@ -23,12 +23,19 @@ const logzioWinstonTransport = new LogzioWinstonTransport({
 });
 
 
-const logger = createLogger(winston.Logger)({
-  transports: [logzioWinstonTransport]
-]);
+
+const logzioWinstonTransport = new LogzioWinstonTransport({
+  level: 'info',
+  name: 'winston_logzio',
+  token: '__YOUR_API_TOKEN__',
+});
+
+
+const logger = createLogger({
+    transports: [logzioWinstonTransport]
+});
 
 logger.log('warn', 'Just a test message', new Error('Big problem'));
-
 ```
 
 Make sure you replace `__YOUR_API_TOKEN__` with your own logz.io api token.<br/>
