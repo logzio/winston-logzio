@@ -23,7 +23,7 @@ const logzioWinstonTransport = new LogzioWinstonTransport({
 });
 
 
-const logger = createLogger({
+const logger = winston.createLogger({
     transports: [logzioWinstonTransport]
 });
 
