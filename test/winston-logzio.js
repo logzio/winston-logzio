@@ -4,35 +4,35 @@ const logzioNodejs = require('logzio-nodejs');
 const winston = require('winston');
 
 const {
-  createLogger
+  createLogger,
 } = winston;
 const LogzioWinstonTransport = require('../lib/winston-logzio');
 
 describe('winston-logzio', () => {
   let logSpy;
-  beforeEach(done => {
+  beforeEach((done) => {
     logSpy = sinon.spy();
     sinon.stub(logzioNodejs, 'createLogger')
       .returns({
-        log: logSpy
+        log: logSpy,
       });
     done();
   });
 
-  afterEach(done => {
+  afterEach((done) => {
     logzioNodejs.createLogger.restore();
     done();
   });
 
   describe('send string as log message', () => {
-    it('builds the log object properly', done => {
+    it('builds the log object properly', (done) => {
       const logzioWinstonTransport = new LogzioWinstonTransport({
         level: 'info',
         name: 'logger1',
-        token: '_API_TOKEN_'
+        token: '_API_TOKEN_',
       });
       const logger = createLogger({
-        transports: [logzioWinstonTransport]
+        transports: [logzioWinstonTransport],
       });
 
       const logMessage = 'Just a test message';
@@ -53,20 +53,20 @@ describe('winston-logzio', () => {
   });
 
   describe('send json as log message', () => {
-    it('builds the log object as json properly', done => {
+    it('builds the log object as json properly', (done) => {
       const logzioWinstonTransport = new LogzioWinstonTransport({
         level: 'info',
         name: 'logger1',
-        token: '_API_TOKEN_'
+        token: '_API_TOKEN_',
       });
       const logger = createLogger({
-        transports: [logzioWinstonTransport]
+        transports: [logzioWinstonTransport],
       });
 
       const logMessage = {
         message: 'Just a test message',
         string_value: 'value',
-        integar_value: 100
+        integar_value: 100,
       };
       const errorMessage = 'Big problem';
       const error = new Error(errorMessage);
@@ -87,20 +87,20 @@ describe('winston-logzio', () => {
   });
 
   describe('send json as log message without error', () => {
-    it('builds the log object with just a message object', done => {
+    it('builds the log object with just a message object', (done) => {
       const logzioWinstonTransport = new LogzioWinstonTransport({
         level: 'info',
         name: 'logger1',
-        token: '_API_TOKEN_'
+        token: '_API_TOKEN_',
       });
       const logger = createLogger({
-        transports: [logzioWinstonTransport]
+        transports: [logzioWinstonTransport],
       });
 
       const logMessage = {
         message: 'Just a test message',
         string_value: 'value',
-        integar_value: 100
+        integar_value: 100,
       };
       logger.log('warn', logMessage);
 

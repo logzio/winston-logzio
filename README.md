@@ -2,17 +2,27 @@
 
 # winston-logzio
 A Winston transport wrapper for [Logz.io](http://logz.io/)
+## Versions
+Supports Winston 3, If you want to use Winston 2 - Checkout v1.0.8
 
 ## Installation
-```js
+```bash
 npm install winston-logzio --save
 ```
 
 
 ## Sample usage
 ```javascript
-var winston = require('winston');
-var logzioWinstonTransport = require('winston-logzio');
+const winston = require('winston');
+const LogzioWinstonTransport = require('winston-logzio');
+
+const logzioWinstonTransport = new LogzioWinstonTransport({
+  level: 'info',
+  name: 'winston_logzio',
+  token: '__YOUR_API_TOKEN__',
+});
+
+
 
 const logzioWinstonTransport = new LogzioWinstonTransport({
   level: 'info',
@@ -25,11 +35,7 @@ const logger = createLogger({
     transports: [logzioWinstonTransport]
 });
 
-const logMessage = 'Just a test message';
-const errorMessage = 'Big problem';
-const error = new Error(errorMessage);
-logger.log('warn', logMessage, error);
-
+logger.log('warn', 'Just a test message', new Error('Big problem'));
 ```
 
 Make sure you replace `__YOUR_API_TOKEN__` with your own logz.io api token.<br/>
