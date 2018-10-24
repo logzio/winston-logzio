@@ -23,14 +23,6 @@ const logzioWinstonTransport = new LogzioWinstonTransport({
 });
 
 
-
-const logzioWinstonTransport = new LogzioWinstonTransport({
-  level: 'info',
-  name: 'winston_logzio',
-  token: '__YOUR_API_TOKEN__',
-});
-
-
 const logger = createLogger({
     transports: [logzioWinstonTransport]
 });
