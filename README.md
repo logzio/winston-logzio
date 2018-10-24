@@ -14,12 +14,6 @@ npm install winston-logzio --save
 var winston = require('winston');
 var logzioWinstonTransport = require('winston-logzio');
 
-var loggerOptions = {
-    token: '__YOUR_API_TOKEN__',
-    host: 'listener.logz.io', // either listener.logz.io for US accounts or listener-eu.logz.io for EU Accounts
-    type: 'YourLogType'     // OPTIONAL (If none is set, it will be 'nodejs')
-};
-
 const logzioWinstonTransport = new LogzioWinstonTransport({
   level: 'info',
   name: 'winston_logzio',
@@ -27,9 +21,9 @@ const logzioWinstonTransport = new LogzioWinstonTransport({
 });
 
 
-var logger = createLogger(winston.Logger)({
-  transports: [logzioWinstonTransport],
-  ]);
+const logger = createLogger({
+    transports: [logzioWinstonTransport]
+});
 
 const logMessage = 'Just a test message';
 const errorMessage = 'Big problem';
