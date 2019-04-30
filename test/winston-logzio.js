@@ -126,7 +126,7 @@ describe('winston-logzio', () => {
   });
 
   describe('send json as log message', () => {
-    it('bbuilds the log object using json formater', (done) => {
+    it('build the log object using json formater', (done) => {
       const logzioWinstonTransport = new LogzioWinstonTransport({
         level: 'info',
         name: 'logger1',
