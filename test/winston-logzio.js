@@ -42,7 +42,6 @@ describe('winston-logzio', () => {
           format.errors({
             stack: true,
           }),
-          // format.simple(),
         ),
         transports: [logzioWinstonTransport],
       });
@@ -78,16 +77,16 @@ describe('winston-logzio', () => {
 
       const logMessage = 'Just a test message';
       const stringValue = 'value';
-      const integarValue = 100;
+      const integerValue = 100;
       const testMessage = 'logzio';
 
-      logger.log('info', 'Just a test message - %s %d', stringValue, integarValue, {
+      logger.log('info', 'Just a test message - %s %d', stringValue, integerValue, {
         test: testMessage,
       });
 
       assert(logSpy.calledOnce);
       const loggedObject = logSpy.args[0][0];
-      assert(loggedObject.message === `${logMessage} - ${stringValue} ${integarValue}`);
+      assert(loggedObject.message === `${logMessage} - ${stringValue} ${integerValue}`);
       assert(loggedObject.level === 'info');
       assert(loggedObject.test === testMessage);
 
