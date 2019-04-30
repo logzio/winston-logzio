@@ -4,8 +4,14 @@ const logzioNodejs = require('logzio-nodejs');
 const winston = require('winston');
 
 const {
+  MESSAGE,
+} = require('triple-beam');
+
+const {
   createLogger,
+  format,
 } = winston;
+
 const LogzioWinstonTransport = require('../lib/winston-logzio');
 
 describe('winston-logzio', () => {
@@ -32,6 +38,10 @@ describe('winston-logzio', () => {
         token: '_API_TOKEN_',
       });
       const logger = createLogger({
+        format: format.combine(
+          format.splat(),
+          format.simple(),
+        ),
         transports: [logzioWinstonTransport],
       });
 
@@ -44,73 +54,104 @@ describe('winston-logzio', () => {
       const loggedObject = logSpy.args[0][0];
       assert(loggedObject.message === logMessage);
       assert(loggedObject.level === 'warn');
-      assert(typeof loggedObject.meta === 'object');
-      assert(typeof loggedObject.meta.error === 'string');
-      assert(loggedObject.meta.error.indexOf(errorMessage) >= 0);
+      assert(loggedObject.meta.message === errorMessage);
+      assert(typeof loggedObject.meta.stack === 'string');
+
+      done();
+    });
+  });
+
+  describe('send a formated string as log message', () => {
+    it('builds the log object using splat string', (done) => {
+      const logzioWinstonTransport = new LogzioWinstonTransport({
+        level: 'info',
+        name: 'logger1',
+        token: '_API_TOKEN_',
+      });
+      const logger = createLogger({
+        format: format.combine(
+          format.splat(),
+          format.simple(),
+        ),
+        transports: [logzioWinstonTransport],
+      });
+
+      const logMessage = 'Just a test message';
+      const stringValue = 'value';
+      const integarValue = 100;
+      const testMessage = 'logzio';
+
+      logger.log('info', 'Just a test message - %s %d', stringValue, integarValue, {
+        test: testMessage,
+      });
+
+      assert(logSpy.calledOnce);
+      const loggedObject = logSpy.args[0][0];
+      assert(loggedObject.message === `${logMessage} - ${stringValue} ${integarValue}`);
+      assert(loggedObject.level === 'info');
+      assert(loggedObject.meta.test === testMessage);
+
+      done();
+    });
+  });
+
+  describe('send json as log message - no message field', () => {
+    it('builds the log object using json formater without message field', (done) => {
+      const logzioWinstonTransport = new LogzioWinstonTransport({
+        level: 'info',
+        name: 'logger1',
+        token: '_API_TOKEN_',
+      });
+      const logger = createLogger({
+        format: format.json(),
+        transports: [logzioWinstonTransport],
+      });
+
+      const logMessage = 'Just a test message';
+      const testMessage = 'logzio';
+      logger.log('info', {
+        msg: logMessage,
+        test: testMessage,
+      });
+
+      assert(logSpy.calledOnce);
+      const loggedObject = logSpy.args[0][0];
+
+      assert(loggedObject.msg === logMessage);
+      assert(loggedObject.test === testMessage);
+      assert(loggedObject.level === 'info');
+      assert(loggedObject[MESSAGE] === loggedObject.message);
 
       done();
     });
   });
 
   describe('send json as log message', () => {
-    it('builds the log object as json properly', (done) => {
+    it('bbuilds the log object using json formater', (done) => {
       const logzioWinstonTransport = new LogzioWinstonTransport({
         level: 'info',
         name: 'logger1',
         token: '_API_TOKEN_',
       });
       const logger = createLogger({
+        format: format.json(),
         transports: [logzioWinstonTransport],
       });
 
-      const logMessage = {
-        message: 'Just a test message',
-        string_value: 'value',
-        integar_value: 100,
-      };
-      const errorMessage = 'Big problem';
-      const error = new Error(errorMessage);
-      logger.log('warn', logMessage, error);
-
-      assert(logSpy.calledOnce);
-      const loggedObject = logSpy.args[0][0];
-      assert(loggedObject.message === logMessage.message);
-      assert(loggedObject.string_value === logMessage.string_value);
-      assert(loggedObject.integer_value === logMessage.integer_value);
-      assert(loggedObject.level === 'warn');
-      assert(typeof loggedObject.meta === 'object');
-      assert(typeof loggedObject.meta.error === 'string');
-      assert(loggedObject.meta.error.indexOf(errorMessage) >= 0);
-
-      done();
-    });
-  });
-
-  describe('send json as log message without error', () => {
-    it('builds the log object with just a message object', (done) => {
-      const logzioWinstonTransport = new LogzioWinstonTransport({
-        level: 'info',
-        name: 'logger1',
-        token: '_API_TOKEN_',
+      const logMessage = 'Just a test message';
+      const testMessage = 'logzio';
+      logger.log('info', {
+        message: logMessage,
+        test: testMessage,
       });
-      const logger = createLogger({
-        transports: [logzioWinstonTransport],
-      });
-
-      const logMessage = {
-        message: 'Just a test message',
-        string_value: 'value',
-        integar_value: 100,
-      };
-      logger.log('warn', logMessage);
 
       assert(logSpy.calledOnce);
       const loggedObject = logSpy.args[0][0];
 
-      assert(loggedObject.message === logMessage.message);
-      assert(loggedObject.string_value === logMessage.string_value);
-      assert(loggedObject.integer_value === logMessage.integer_value);
-      assert(loggedObject.level === 'warn');
+      assert(loggedObject.message === logMessage);
+      assert(loggedObject.test === testMessage);
+      assert(loggedObject.level === 'info');
+
       done();
     });
   });
