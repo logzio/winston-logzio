@@ -25,7 +25,7 @@ const logzioWinstonTransport = new LogzioWinstonTransport({
 
 const logger = winston.createLogger({
     format: format.simple(),
-    transports: [logzioWinstonTransport]
+    transports: [logzioWinstonTransport],
 });
 
 logger.log('warn', 'Just a test message');
