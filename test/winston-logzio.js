@@ -30,8 +30,8 @@ describe('winston-logzio', () => {
     done();
   });
 
-  describe('send string as log message', () => {
-    it('builds the log object properly', (done) => {
+  describe('send error as log message', () => {
+    it('builds the log object properly with error', (done) => {
       const logzioWinstonTransport = new LogzioWinstonTransport({
         level: 'info',
         name: 'logger1',
@@ -39,23 +39,23 @@ describe('winston-logzio', () => {
       });
       const logger = createLogger({
         format: format.combine(
-          format.splat(),
-          format.simple(),
+          format.errors({
+            stack: true,
+          }),
+          // format.simple(),
         ),
         transports: [logzioWinstonTransport],
       });
 
-      const logMessage = 'Just a test message';
       const errorMessage = 'Big problem';
       const error = new Error(errorMessage);
-      logger.log('warn', logMessage, error);
+      logger.log('error', error);
 
       assert(logSpy.calledOnce);
       const loggedObject = logSpy.args[0][0];
-      assert(loggedObject.message === logMessage);
-      assert(loggedObject.level === 'warn');
-      assert(loggedObject.meta.message === errorMessage);
-      assert(typeof loggedObject.meta.stack === 'string');
+      assert(loggedObject.level === 'error');
+      assert(loggedObject.message === errorMessage);
+      assert(typeof loggedObject.stack === 'string');
 
       done();
     });
@@ -89,7 +89,7 @@ describe('winston-logzio', () => {
       const loggedObject = logSpy.args[0][0];
       assert(loggedObject.message === `${logMessage} - ${stringValue} ${integarValue}`);
       assert(loggedObject.level === 'info');
-      assert(loggedObject.meta.test === testMessage);
+      assert(loggedObject.test === testMessage);
 
       done();
     });
