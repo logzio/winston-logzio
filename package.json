@@ -1,9 +1,10 @@
 {
   "name": "winston-logzio",
   "description": "A winston transport wrapper for logzio",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "author": "Gilly Barr <gilly@logz.io>",
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Gilly Barr",
       "email": "gillyb@gmail.com"
     },
@@ -33,6 +34,7 @@
     "json-stringify-safe": "5.0.1",
     "lodash.assign": "4.2.0",
     "logzio-nodejs": "^1.0.3",
+    "triple-beam": "^1.3.0",
     "winston": "^3.1.0",
     "winston-transport": "^4.2.0"
   },
