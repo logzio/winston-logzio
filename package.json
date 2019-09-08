@@ -3,7 +3,8 @@
   "description": "A winston transport wrapper for logzio",
   "version": "5.0.1",
   "author": "Gilly Barr <gilly@logz.io>",
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Gilly Barr",
       "email": "gillyb@gmail.com"
     },
