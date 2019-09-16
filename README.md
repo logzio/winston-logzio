@@ -36,6 +36,8 @@ Make sure you replace `__YOUR_API_TOKEN__` with your own logz.io api token.<br/>
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup)
 
 
+**Note:** If winston-logzio is used as part of a serverless service (AWS Lambda, Azure Functions, Google Cloud Functions, etc.), add `logger.close()` at the end of the run.
+
 ## Details
 This winston plugin, basically just wraps our [nodejs logzio shipper](https://github.com/logzio/logzio-nodejs).<br/>
 If you want to configure the nodejs logger, any parameters sent to winston when initializing the transport
