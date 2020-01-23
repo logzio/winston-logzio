@@ -14,8 +14,6 @@ npm install winston-logzio --save
 ## Configure winston-logzio
 Use the samples in the code block below as a starting point, and replace the sample with a configuration that matches your needs.
 
-For a complete list of options, see the configuration parameters below the code block.
-
 ```javascript
 const winston = require('winston');
 const LogzioWinstonTransport = require('winston-logzio');
