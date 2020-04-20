@@ -1,17 +1,19 @@
 ![Build Status](https://travis-ci.org/logzio/winston-logzio.svg?branch=master)
 
 # winston-logzio
-A Winston transport wrapper for [Logz.io](http://logz.io/)
+winston-logzio is a winston plugin and wrapper for the logzio-nodejs appender. With winston-logzio, you can take advantage of the winston logger framework with your Node.js app.
+
 ## Versions
 Supports Winston 3, If you want to use Winston 2 - Checkout v1.0.8
 
-## Installation
+## Add the dependency to your project
 ```bash
 npm install winston-logzio --save
 ```
 
+## Configure winston-logzio
+Use the samples in the code block below as a starting point, and replace the sample with a configuration that matches your needs.
 
-## Sample usage
 ```javascript
 const winston = require('winston');
 const LogzioWinstonTransport = require('winston-logzio');
@@ -19,7 +21,8 @@ const LogzioWinstonTransport = require('winston-logzio');
 const logzioWinstonTransport = new LogzioWinstonTransport({
   level: 'info',
   name: 'winston_logzio',
-  token: '__YOUR_API_TOKEN__',
+  token: '<<SHIPPING-TOKEN>>',
+  host: '<<LISTENER-HOST>>',
 });
 
 
@@ -31,7 +34,8 @@ const logger = winston.createLogger({
 logger.log('warn', 'Just a test message');
 ```
 
-Make sure you replace `__YOUR_API_TOKEN__` with your own logz.io api token.<br/>
+Make sure you replace `<<SHIPPING-TOKEN>>` with your own logz.io logs shipping token.<br/>
+Replace `<<LISTENER-HOST>>` with your region’s listener host (for example, listener.logz.io). For more information on finding your account’s region, see [Account region](https://docs.logz.io/user-guide/accounts/account-region.html).
 
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup)
 
