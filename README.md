@@ -36,7 +36,7 @@ logger.log('warn', 'Just a test message');
 ```
 Replace `<<SHIPPING-TOKEN>>` with your own logz.io logs shipping token.<br/>
 Replace `<<LISTENER-HOST>>` with your region’s listener host (for example, listener.logz.io). For more information on finding your account’s region, see [Account region](https://docs.logz.io/user-guide/accounts/account-region.html).<br/>
-For more parameters to LogzioWinstonTransport and configuration options see our [docs](https://deploy-preview-503--logz-docs.netlify.app/shipping/log-sources/nodejs.html#parameters-1).
+For more parameters for LogzioWinstonTransport and configuration options see our [docs](https://deploy-preview-503--logz-docs.netlify.app/shipping/log-sources/nodejs.html#parameters-1).
 
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup)
 
@@ -92,7 +92,7 @@ logger.log('warn', 'Just a test message');
 
 Replace `<<SHIPPING-TOKEN>>` with your own logz.io logs shipping token.<br/>
 Replace `<<LISTENER-HOST>>` with your region’s listener host (for example, listener.logz.io). For more information on finding your account’s region, see [Account region](https://docs.logz.io/user-guide/accounts/account-region.html).<br/>
-For more parameters to LogzioWinstonTransport and configuration options see our [docs](https://deploy-preview-503--logz-docs.netlify.app/shipping/log-sources/nodejs.html#parameters-1).
+For more parameters for LogzioWinstonTransport and configuration options see our [docs](https://deploy-preview-503--logz-docs.netlify.app/shipping/log-sources/nodejs.html#parameters-1).
 
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup)
 
