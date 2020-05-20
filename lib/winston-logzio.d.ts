@@ -1,5 +1,5 @@
 import { ILoggerOptions } from "logzio-nodejs";
-import * as Transport from "winston-transport";
+import Transport from "winston-transport";
 
 declare namespace LogzioWinstonTransport {
   interface IWinstonLogzioLoggerOptions extends ILoggerOptions {

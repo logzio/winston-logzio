@@ -34,9 +34,8 @@ const logger = winston.createLogger({
 
 logger.log('warn', 'Just a test message');
 ```
-Replace `<<SHIPPING-TOKEN>>` with your own logz.io logs shipping token.<br/>
-Replace `<<LISTENER-HOST>>` with your region’s listener host (for example, listener.logz.io). </br>  
-For more information on finding your account’s region, see [Account region](https://docs.logz.io/user-guide/accounts/account-region.html).<br/>
+Replace `<<SHIPPING-TOKEN>>` with your own logz.io logs shipping [token](https://app.logz.io/#/dashboard/settings/general).<br/>
+Replace `<<LISTENER-HOST>>` with your [region’s listener host](https://docs.logz.io/user-guide/accounts/account-region.html) (for example, listener.logz.io). </br>   
 For more parameters for LogzioWinstonTransport and configuration options see our [docs](https://deploy-preview-503--logz-docs.netlify.app/shipping/log-sources/nodejs.html#parameters-1). </br>
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup)
 
@@ -90,10 +89,9 @@ const logger = winston.createLogger({
 logger.log('warn', 'Just a test message');
 ```
 
-Replace `<<SHIPPING-TOKEN>>` with your own logz.io logs shipping token.<br/>
-Replace `<<LISTENER-HOST>>` with your region’s listener host (for example, listener.logz.io). </br>
+Replace `<<SHIPPING-TOKEN>>` with your own logz.io logs shipping [token](https://app.logz.io/#/dashboard/settings/general).<br/>
+Replace `<<LISTENER-HOST>>` with your [region’s listener host](https://docs.logz.io/user-guide/accounts/account-region.html) (for example, listener.logz.io). </br>
 
-For more information on finding your account’s region, see [Account region](https://docs.logz.io/user-guide/accounts/account-region.html).<br/>
 For more parameters for LogzioWinstonTransport and configuration options see our [docs](https://deploy-preview-503--logz-docs.netlify.app/shipping/log-sources/nodejs.html#parameters-1).</br>
 For trouble shooting press [here](#trouble-shooting).</br>
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup).
