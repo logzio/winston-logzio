@@ -113,7 +113,7 @@ winston.remove(winston.transports.Console);
 ```
 <div id="trouble-shooting">
 
-# Trouble shooting
+# Troubleshooting
 
 To fix errors related to "esModuleInterop" flag make sure you run the relavent 'tsconfig' file.
 These might help:
