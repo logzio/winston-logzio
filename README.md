@@ -60,7 +60,7 @@ If you do not have a [Logz.io](http://logz.io) account, you can sign up for a fr
 -   **addTimestampWithNanoSecs** - Add a timestamp with nano seconds granularity. This is needed when many logs are sent in the same millisecond, so you can properly order the logs in kibana. The added timestamp field will be `@timestamp_nano` Default: `false`
 -   **compress** - If true the the logs are compressed in gzip format. Default: `false`
 -   **internalLogger** - set internal logger that supports the function log. Default: console.
--   **setUserAgent** - Set `false` to send logs without user-agent field in request header. Default:`true`. If you want to send data from Firefox browser set that option to `false`
+-   **setUserAgent** - Set to `false` to send logs without the user-agent field in the request header. Default:`true`. If you want to send data from Firefox browser, set that option to `false`.
 -   **extraFields** - Adds your own custom fields to each log. Add in JSON Format, for example: `extraFields : { field_1: "val_1", field_2: "val_2" , ... }`.
 
 ### Details
