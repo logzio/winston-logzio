@@ -1,7 +1,7 @@
 {
   "name": "winston-logzio",
   "description": "A winston transport wrapper for logzio",
-  "version": "5.1.5",
+  "version": "5.1.6",
   "author": "Gilly Barr <gilly@logz.io>",
   "contributors": [
     {
@@ -24,10 +24,10 @@
       "name": "Yotam loewenbach",
       "email": "yotam.loewenbach@logz.io"
     },
-	{
-	  "name": "Anton Kolomiiets",
-	  "email": "anton.kolomiiets@logz.io"
-	}
+    {
+      "name": "Anton Kolomiiets",
+      "email": "anton.kolomiiets@logz.io"
+    }
   ],
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "@types/node": "^14.0.4",
     "json-stringify-safe": "5.0.1",
     "lodash.assign": "4.2.0",
-    "logzio-nodejs": "^2.0.4",
+    "logzio-nodejs": "^2.1.4",
     "triple-beam": "^1.3.0",
     "winston": "^3.1.0",
     "winston-transport": "^4.2.0",
