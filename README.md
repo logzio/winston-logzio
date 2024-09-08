@@ -170,7 +170,7 @@ tsc --project tsconfig.json
   git clone https://github.com/logzio/winston-logzio.git
   cd winston-logzio
   ```
-2. buils and run tests:
+2. build and run tests:
   ```bash
   npm install
   npm test
