@@ -163,3 +163,14 @@ tsc --project tsconfig.json
 </div>
 
 </div>
+
+## Build and test locally
+1. clone the repository:
+  ```bash
+  git clone https://github.com/logzio/winston-logzio.git
+  cd winston-logzio
+  ```
+2. buils and run tests:
+  ```bash
+  npm install
+  npm test
