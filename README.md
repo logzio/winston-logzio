@@ -58,6 +58,7 @@ If you do not have a [Logz.io](http://logz.io) account, you can sign up for a fr
 -   **callback** - A callback function called when an unrecoverable error has occured in the logger. The function API is: function(err) - err being the Error object.
 -   **timeout** - The read/write/connection timeout in milliseconds.
 -   **addTimestampWithNanoSecs** - Add a timestamp with nano seconds granularity. This is needed when many logs are sent in the same millisecond, so you can properly order the logs in kibana. The added timestamp field will be `@timestamp_nano` Default: `false`
+- **addOtelContext** - Add `trace_id`, `span_id`, `service_name` fields to logs when opentelemetry context is available.  Default: `true`
 -   **compress** - If true the the logs are compressed in gzip format. Default: `false`
 -   **internalLogger** - set internal logger that supports the function log. Default: console.
 -   **setUserAgent** - Set to `false` to send logs without the user-agent field in the request header. Default:`true`. If you want to send data from Firefox browser, set that option to `false`.
@@ -163,6 +164,29 @@ tsc --project tsconfig.json
 </div>
 
 </div>
+
+## Add opentelemetry context
+If you're sending traces with OpenTelemetry instrumentation (auto or manual), you can correlate your logs with the trace context. That way, your logs will have traces data in it, such as service name, span id and trace id (version >= `5.2.0`). 
+
+This feature is enabled by default, To disable it, set the `AddOtelContext` param in your handler configuration to `false`, like in this example:
+
+```javascript
+const winston = require('winston');
+const LogzioWinstonTransport = require('winston-logzio');
+
+const logzioWinstonTransport = new LogzioWinstonTransport({
+    level: 'info',
+    name: 'winston_logzio',
+    token: '<<SHIPPING-TOKEN>>',
+    host: '<<LISTENER-HOST>>',
+    addOtelCotext: false,
+});
+
+const logger = winston.createLogger({
+    format: winston.format.simple(),
+    transports: [logzioWinstonTransport],
+});
+```
 
 ## Build and test locally
 1. Clone the repository:
