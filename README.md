@@ -45,7 +45,8 @@ Replace `<<LISTENER-HOST>>` with your [region’s listener host](https://docs.lo
 For more parameters for LogzioWinstonTransport and configuration options see our [docs](https://docs.logz.io/shipping/log-sources/nodejs.html).<br/>
 If you do not have a [Logz.io](http://logz.io) account, you can sign up for a free trial [here](https://app.logz.io/#/signup).
 
-**Note:** If winston-logzio is used as part of a serverless service (AWS Lambda, Azure Functions, Google Cloud Functions, etc.), add `logger.close()` at the end of the run so buffered logs are sent before the process exits.
+> [!NOTE]
+> If `winston-logzio` is used as part of a serverless service (AWS Lambda, Azure Functions, Google Cloud Functions, etc.), add `logger.close()` at the end of the run so buffered logs are sent before the process exits.
 
 ## Options
 
