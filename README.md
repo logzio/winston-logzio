@@ -8,7 +8,7 @@ winston-logzio is a winston plugin and wrapper for the logzio-nodejs appender. W
 
 Supports Winston 3. If you want to use Winston 2, check out v1.0.8.
 
-Requires Node.js `^18.19.0 || >=20.6.0` (required by the OpenTelemetry packages used by [logzio-nodejs](https://github.com/logzio/logzio-nodejs)).
+Requires Node.js 20 or later.
 
 ### Add the dependency to your project
 
